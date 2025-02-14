@@ -9,13 +9,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px; 
 }
 
 /* Flexbox for centering the heart & text */
 .transition-container {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap; 
     gap: 15px;
+    padding: 10px; 
 }
 
 /* Pixelated text */
@@ -23,13 +27,14 @@ body {
     font-size: 20px;
     color: #ff4444;
     text-shadow: 2px 2px 0px #000;
+    white-space: nowrap; 
 }
 
 /* Manually created pixel heart */
 .pixel-heart {
     width: 40px;
     height: 40px;
-    background-image: url('https://i.imgur.com/3PhjHQr.png'); /* Pixel heart */
+    background-image: url("heart.png"); 
     background-size: cover;
     animation: pulseHeart 1s infinite alternate, spinHeart 4s linear infinite;
 }
