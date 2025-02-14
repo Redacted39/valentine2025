@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: #f8d7da;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Flexbox for centering the heart & text */
+.transition-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Pixelated text */
+.pixel-text {
+    font-size: 20px;
+    color: #ff4444;
+    text-shadow: 2px 2px 0px #000;
+}
+
+/* Manually created pixel heart */
+.pixel-heart {
+    width: 40px;
+    height: 40px;
+    background-image: url('https://i.imgur.com/3PhjHQr.png'); /* Pixel heart */
+    background-size: cover;
+    animation: pulseHeart 1s infinite alternate, spinHeart 4s linear infinite;
+}
+
+/* Heart pulsing animation */
+@keyframes pulseHeart {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+/* Heart slight spin effect */
+@keyframes spinHeart {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(10deg); }
+}

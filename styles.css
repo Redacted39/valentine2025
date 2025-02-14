@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-color: #f8d7da;
+    background-image: url('https://i.imgur.com/qwYZd7m.png'); /* Pixelated Mario-style BG */
+    background-size: cover;
+    color: #000;
+    padding-top: 50px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 5px 5px 0px #000;
+}
+
+h1 {
+    color: #ff0000;
+    font-size: 20px;
+    text-shadow: 2px 2px 0px #000;
+}
+
+p {
+    font-size: 16px;
+    margin: 20px;
+    text-shadow: 1px 1px 0px #000;
+}
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Pixelated buttons */
+.pixel-button {
+    font-size: 16px;
+    padding: 15px 30px;
+    border: 4px solid black;
+    cursor: pointer;
+    background-color: #ffcc00;
+    box-shadow: 4px 4px 0px black;
+    transition: 0.2s;
+}
+
+.pixel-button:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px black;
+}
+
+#yesButton {
+    background-color: #ff4444;
+    color: white;
+}
+
+#noButton {
+    background-color: #dddddd;
+}
+
+/* Mini Window (Webpage inside a webpage) */
+.mini-window {
+    background: rgba(255, 255, 255, 0.9);
+    width: 500px; /* Increased width */
+    height: 350px; /* Increased height */
+    border: 4px solid black;
+    box-shadow: 8px 8px 0px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Button Container: Side by Side */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+    margin-top: 75px;
+}
+
+/* Ribbon Title Bar */
+.window-ribbon {
+    background: red;
+    color: white;
+    padding: 8px 12px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Window Title */
+.window-title {
+    text-shadow: 2px 2px 0px black;
+}
+
+/* Window Controls (Dash and X) */
+.window-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.window-controls span {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.window-controls span:hover {
+    color: black;
+}
+
+/* Window Content */
+.window-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Button Styling */
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* "Yes" Button */
+#yesButton {
+    background-color: #ff4444;
+    color: white;
+    font-size: 16px;
+    padding: 15px 30px;
+    border: 4px solid black;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px black;
+}
+
+/* "No" Button */
+#noButton {
+    background-color: #dddddd;
+    font-size: 16px;
+    padding: 15px 30px;
+    border: 4px solid black;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px black;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* After first click, let the "No" button move freely */
+.runaway {
+    position: fixed !important; /* Override container positioning */
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
