@@ -16,6 +16,7 @@
             position: relative;
             width: 200px;
             height: 150px;
+            cursor: pointer; /* Show pointer to indicate interaction */
         }
         .envelope-back {
             position: absolute;
@@ -43,39 +44,33 @@
             left: 0;
             width: 100%;
             height: 50%;
-            background-color: #e595a2; /* Darkest flap */
+            background-color: #e595a2;
             clip-path: polygon(0 0, 50% 100%, 100% 0);
             transform-origin: top;
             transition: transform 1s ease-in-out;
             z-index: 4;
         }
-        .flap-left {
+        .flap-left, .flap-right, .flap-bottom {
             position: absolute;
             bottom: 0;
-            left: 0;
             width: 50%;
             height: 100%;
-            background-color: #f8c3cb; /* Lightest flap */
-            clip-path: polygon(0 100%, 0 0, 100% 50%);
+            background-color: #f8c3cb;
             z-index: 3;
+        }
+        .flap-left {
+            left: 0;
+            clip-path: polygon(0 100%, 0 0, 100% 50%);
         }
         .flap-right {
-            position: absolute;
-            bottom: 0;
             right: 0;
-            width: 50%;
-            height: 100%;
-            background-color: #f8c3cb; /* Lightest flap */
             clip-path: polygon(100% 100%, 100% 0, 0 50%);
-            z-index: 3;
         }
         .flap-bottom {
-            position: absolute;
-            bottom: 0;
             left: 0;
             width: 100%;
             height: 50%;
-            background-color: #f6aab7; /* Intermediate shade */
+            background-color: #f6aab7;
             clip-path: polygon(0 100%, 50% 0, 100% 100%);
             z-index: 5;
         }
@@ -88,24 +83,52 @@
             color: red;
             z-index: 6;
         }
-        .container:hover .flap-top {
+        
+        /* Open animation */
+        .open .flap-top {
             transform: rotateX(180deg);
         }
-        .container:hover .letter {
+        .open .letter {
             transform: translateY(-50px);
         }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="container" id="envelope">
         <div class="envelope-back"></div>
-        <div class="letter"></div>
-        <a href="main.html" class="letter"></a>
+        <a href="main.html" class="letter" id="letter"></a>
         <div class="flap-top"></div>
         <div class="flap-left"></div>
         <div class="flap-right"></div>
         <div class="flap-bottom"></div>
         <div class="heart">❤</div>
     </div>
+
+    <script>
+        const envelope = document.getElementById("envelope");
+        const letter = document.getElementById("letter");
+
+        function isTouchDevice() {
+            return "ontouchstart" in window || navigator.maxTouchPoints;
+        }
+
+        if (isTouchDevice()) {
+            envelope.addEventListener("click", () => {
+                envelope.classList.add("open");
+                setTimeout(() => {
+                    letter.click(); // Redirect after animation
+                }, 1200);
+            });
+        } else {
+            envelope.addEventListener("mouseenter", () => {
+                envelope.classList.add("open");
+            });
+            envelope.addEventListener("click", () => {
+                letter.click();
+            });
+        }
+    </script>
+
 </body>
 </html>
