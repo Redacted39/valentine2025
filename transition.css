@@ -32,13 +32,16 @@ body {
 
 /* Manually created pixel heart */
 .pixel-heart {
-    width: 40px;
-    height: 40px;
+    width: 10vw; 
+    height: 10vw;
+    max-width: 50px;
+    max-height: 50px;
     background-image: url("heart.png"); 
-    background-size: cover;
-    animation: pulseHeart 1s infinite alternate, spinHeart 4s linear infinite;
+    background-size: contain; /* Ensure it scales properly */
+    background-repeat: no-repeat;
+    display: block; /* Prevent inline cutting */
+    overflow: visible; /* Ensure it doesn't clip */
 }
-
 /* Heart pulsing animation */
 @keyframes pulseHeart {
     0% { transform: scale(1); }
@@ -49,4 +52,30 @@ body {
 @keyframes spinHeart {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(10deg); }
+}
+
+/* Responsive Fix for Small Screens */
+@media (max-width: 768px) {
+    .transition-container {
+        flex-direction: column; /* Stack heart and text vertically */
+        gap: 10px;
+    }
+
+    .pixel-text {
+        font-size: 5vw; /* Scale text based on viewport width */
+    }
+
+    .pixel-heart {
+        width: 10vw; /* Adjust heart size dynamically */
+        height: 10vw;
+        max-width: 50px; /* Prevent it from getting too large */
+        max-height: 50px;
+    }
+}
+
+/* For Ultra-Small Screens (Phones) */
+@media (max-width: 400px) {
+    .pixel-text {
+        font-size: 6vw; /* Slightly larger for readability */
+    }
 }

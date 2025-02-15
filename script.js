@@ -84,3 +84,22 @@ document.addEventListener("mousemove", (event) => {
         }
     }
 });
+
+// Prevent "No" button from going completely off-screen
+document.addEventListener("mousemove", (event) => {
+    if (runawayMode) {
+        const x = event.clientX;
+        const y = event.clientY;
+        const noButtonRect = noButton.getBoundingClientRect();
+
+        let newX = Math.random() * (window.innerWidth - 100);
+        let newY = Math.random() * (window.innerHeight - 50);
+
+        // Keep the button within safe zones
+        newX = Math.max(20, Math.min(newX, window.innerWidth - 120));
+        newY = Math.max(20, Math.min(newY, window.innerHeight - 80));
+
+        noButton.style.left = `${newX}px`;
+        noButton.style.top = `${newY}px`;
+    }
+});
